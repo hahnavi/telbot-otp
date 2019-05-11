@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require('express')
 
-const router = express.Router();
+const router = express.Router()
 
-const OtpController = require('../controllers/OtpController');
+const OtpController = require('../controllers/OtpController')
 
 /* POST otp generate. */
-router.post('/generate', OtpController.generate);
+router.post('/generate', OtpController.generate)
 
 /* POST otp verify. */
-router.post('/verify', OtpController.verify);
+router.post('/verify', OtpController.verify)
 
-module.exports = router;
+module.exports = router

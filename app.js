@@ -1,11 +1,67 @@
-const express = require('express');
+const express = require('express')
+const http = require('http')
+const bot = require('./bot')
+const { connectDb } = require('./models')
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-app.use('/user', require('./routes/user'));
-app.use('/otp', require('./routes/otp'));
+app.use('/user', require('./routes/user'))
+app.use('/otp', require('./routes/otp'))
 
-module.exports = app;
+const normalizePort = (val) => {
+  const port = parseInt(val, 10)
+  if (Number.isNaN(port)) {
+    return val
+  }
+  if (port >= 0) {
+    return port
+  }
+  return false
+}
+
+const port = normalizePort(process.env.PORT || '3000')
+app.set('port', port)
+
+const onError = (error) => {
+  if (error.syscall !== 'listen') {
+    throw error
+  }
+
+  const bind = typeof port === 'string'
+    ? `Pipe ${port}`
+    : `Port ${port}`
+
+  if (error.code === 'EACCES') {
+    console.error(`${bind} requires elevated privileges`)
+    process.exit(1)
+  } else if (error.code === 'EADDRINUSE') {
+    console.error(`${bind} is already in use`)
+    process.exit(1)
+  } else {
+    throw error
+  }
+}
+
+const server = http.createServer(app)
+
+const onListening = () => {
+  const addr = server.address()
+  console.log(`🚀  Listening on http://${addr.address}:${addr.port}.`)
+  bot.launch()
+  console.log('🚀  Bot is launched.')
+}
+
+server.on('error', onError)
+server.on('listening', onListening)
+
+connectDb()
+  .then(async () => {
+    console.log('🚀  Connected to database.')
+    server.listen(port, process.env.HOST || '0.0.0.0')
+  })
+  .catch((error) => {
+    console.log(`Database error: ${error.message}`)
+  })
