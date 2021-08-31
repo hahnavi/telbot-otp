@@ -1,12 +1,10 @@
 const moment = require('moment')
 const mongoose = require('mongoose')
-const Telegram = require('telegraf/telegram')
+const bot = require('../bot')
 
 const { UserChat, Otp } = require('../models')
 
 require('dotenv').config()
-
-const telegram = new Telegram(process.env.BOT_TOKEN)
 
 exports.generate = async (req, res) => {
   const userId = req.body.user_id
@@ -43,7 +41,7 @@ exports.generate = async (req, res) => {
     await otpNew.save()
   }
 
-  telegram.sendMessage(userChat.chat_id, `Your OTP Code: ${otpVal}`)
+  bot.telegram.sendMessage(userChat.chat_id, `Your OTP Code: ${otpVal}`)
     .then(() => {
       res.send({ success: true })
     })

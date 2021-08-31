@@ -1,4 +1,4 @@
-const Telegraf = require('telegraf')
+const { Telegraf } = require('telegraf')
 const mongoose = require('mongoose')
 const { Registration, UserChat } = require('./models')
 
