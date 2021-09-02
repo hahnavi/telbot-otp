@@ -7,10 +7,12 @@
     "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "mongoose": "^6.0.3",
+    "swagger-ui-express": "^4.1.6",
     "telegraf": "^4.4.1"
   },
   "devDependencies": {

@@ -12,10 +12,13 @@ const { connectDb } = require('./models')
 const app = express()
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
 
 app.use('/user', require('./routes/user'))
 app.use('/otp', require('./routes/otp'))
+
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('./swagger.json')
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10)
@@ -55,9 +58,10 @@ const server = http.createServer(app)
 
 const onListening = () => {
   const addr = server.address()
-  console.log(`🚀  Listening on http://${addr.address}:${addr.port}.`)
+  console.log(`Listening on http://${addr.address}:${addr.port}`)
+  console.log(`API Documentation at http://${addr.address}:${addr.port}/api-docs`)
   bot.launch()
-  console.log('🚀  Bot is launched.')
+  console.log('Bot is launched')
 }
 
 server.on('error', onError)
@@ -65,7 +69,7 @@ server.on('listening', onListening)
 
 connectDb()
   .then(async () => {
-    console.log('🚀  Connected to database.')
+    console.log('Connected to database')
     server.listen(port, process.env.HOST || '0.0.0.0')
   })
   .catch((error) => {

@@ -1,13 +1,13 @@
-FROM node:12-alpine
+FROM node:14-alpine
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Bundle app source
 COPY . .
 
 # Install app dependencies
-RUN npm install --only=production
+RUN npm install --production
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
