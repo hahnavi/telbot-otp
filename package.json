@@ -1,7 +1,13 @@
 {
   "name": "telbot-otp",
   "version": "0.1.0",
-  "private": true,
+  "description": "OTP Server with Telegram Bot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hahnavi/telbot-otp.git"
+  },
+  "author": "Abdul Munif Hanafi <amunifhanafi@gmail.com>",
+  "license" : "Apache-2.0",
   "scripts": {
     "start": "node app.js",
     "lint": "eslint --ignore-path .gitignore . --fix"

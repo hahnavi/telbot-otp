@@ -2,7 +2,7 @@
 
 OTP Server with Telegram Bot
 
-## Setup
+## Setup Server
 
 1.  Install all NPM package
     ```
@@ -17,3 +17,23 @@ OTP Server with Telegram Bot
     ```
     npm run start
     ```
+
+## Register User
+
+![screenshot](https://i.ibb.co/D77MPfs/register-01.png)
+
+![screenshot](https://i.ibb.co/MphJjqT/register-02.png)
+
+## Check Registration Status
+
+![screenshot](https://i.ibb.co/6X3fHvY/status.png)
+
+## Generate OTP
+
+![screenshot](https://i.ibb.co/9HRv4z6/generate-01.png)
+
+![screenshot](https://i.ibb.co/ChWSb4b/generate-02.png)
+
+## Verify OTP
+
+![screenshot](https://i.ibb.co/W65tC6n/verify.png)
