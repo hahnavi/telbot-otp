@@ -10,7 +10,8 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "node app.js",
-    "lint": "eslint --ignore-path .gitignore . --fix"
+    "lint": "eslint --ignore-path .gitignore . --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
