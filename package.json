@@ -7,19 +7,19 @@
     "url": "https://github.com/hahnavi/telbot-otp.git"
   },
   "author": "Abdul Munif Hanafi <amunifhanafi@gmail.com>",
-  "license" : "Apache-2.0",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "node app.js",
     "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
     "moment": "^2.29.1",
-    "mongoose": "^6.0.3",
-    "swagger-ui-express": "^4.1.6",
-    "telegraf": "^4.4.1"
+    "mongoose": "^6.1.7",
+    "swagger-ui-express": "^4.3.0",
+    "telegraf": "^4.6.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
@@ -27,7 +27,7 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "husky": "^3.0.2"
+    "husky": "^7.0.4"
   },
   "husky": {
     "hooks": {
