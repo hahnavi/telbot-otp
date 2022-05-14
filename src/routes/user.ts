@@ -1,8 +1,7 @@
-const express = require('express')
+import express from 'express'
+import UserController from '../controllers/UserController'
 
 const router = express.Router()
-
-const UserController = require('../controllers/UserController')
 
 /* POST user registration. */
 router.post('/register', UserController.reg)
@@ -10,4 +9,4 @@ router.post('/register', UserController.reg)
 /* POST user status. */
 router.post('/status', UserController.status)
 
-module.exports = router
+export default router

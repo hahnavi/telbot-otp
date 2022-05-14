@@ -1,8 +1,7 @@
-const express = require('express')
+import express from 'express'
+import OtpController from '../controllers/OtpController'
 
 const router = express.Router()
-
-const OtpController = require('../controllers/OtpController')
 
 /* POST otp generate. */
 router.post('/generate', OtpController.generate)
@@ -10,4 +9,4 @@ router.post('/generate', OtpController.generate)
 /* POST otp verify. */
 router.post('/verify', OtpController.verify)
 
-module.exports = router
+export default router

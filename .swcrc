@@ -1,0 +1,23 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false
+    },
+    "target": "es5",
+    "minify": {
+      "compress": true,
+      "mangle": true
+    }
+  },
+  "minify": true,
+  "sourceMaps": true,
+  "module": {
+    "type": "commonjs"
+  },
+  "env": {
+    "targets": {
+      "node": 16
+    }
+  }
+}

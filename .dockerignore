@@ -1,2 +1,12 @@
+.github
+.vscode
+dist
 node_modules
 npm-debug.log
+.env
+.eslintrc.js
+.gitignore
+.prettierignore
+.prettierrc
+Dockerfile
+nodemon.json
