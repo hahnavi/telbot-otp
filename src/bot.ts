@@ -48,4 +48,12 @@ bot.command('reg', async (ctx) => {
   }
 })
 
+bot.command('stop', async (ctx) => {
+  const chat = await prisma.chat.findFirst({ where: { chatId: ctx.chat.id } })
+  if (chat) {
+    await prisma.user.delete({ where: { id: chat.userId } })
+  }
+  ctx.reply('You are logged out.')
+})
+
 export default bot
