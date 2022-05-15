@@ -9,7 +9,7 @@ bot.start(async (ctx) => {
   if (chat) {
     ctx.reply('Welcome!')
   } else {
-    ctx.reply('Welcome!\nPlease register using the command:\n/reg <user_id>#<reg_code>')
+    ctx.reply('Welcome!\nPlease register using the command:\n/reg <user_id> <reg_code>\nexample:\n/reg myuser123 987654')
   }
 })
 
@@ -20,30 +20,27 @@ bot.command('reg', async (ctx) => {
     return
   }
   const splitted = ctx.message.text.split(/\s+/)
-  if (splitted.length < 2) {
-    ctx.reply('You must enter user id and registration code to register.\nUse commands:\n/reg <user_id>#<reg_code>')
+  if (splitted.length < 3) {
+    ctx.reply('You must enter user id and registration code to register.\nUse commands:\n/reg <user_id> <reg_code>\nexample:\n/reg myuser123 987654')
   } else {
-    const regInput = splitted[1].split('#')
-    if (regInput.length < 2) {
-      ctx.reply('You must enter user id and registration code to register.\nUse commands:\n/reg <user_id>#<reg_code>')
-    } else {
-      const reg = await prisma.registration.findFirst({ where: { userId: regInput[0] } })
-      if (reg) {
-        if (bcrypt.compareSync(regInput[1], reg.regCode)) {
-          const user = await prisma.user.upsert(
-            { where: { userId: regInput[0] }, update: {}, create: { userId: regInput[0] } }
-          )
-          await prisma.chat.upsert(
-            { where: { userId: user.id }, update: {}, create: { userId: user.id, chatId: ctx.chat.id } }
-          )
-          await prisma.registration.delete({ where: { id: reg.id } })
-          ctx.reply('You have successfully registered.')
-        } else {
-          ctx.reply('Failed to register!\nWrong user id or registration code.')
-        }
+    const userId = splitted[1]
+    const regCode = splitted[2]
+    const reg = await prisma.registration.findFirst({ where: { userId } })
+    if (reg) {
+      if (bcrypt.compareSync(regCode, reg.regCode)) {
+        const user = await prisma.user.upsert(
+          { where: { userId }, update: {}, create: { userId } }
+        )
+        await prisma.chat.upsert(
+          { where: { userId: user.id }, update: {}, create: { userId: user.id, chatId: ctx.chat.id } }
+        )
+        await prisma.registration.delete({ where: { id: reg.id } })
+        ctx.reply('You have successfully registered.')
       } else {
         ctx.reply('Failed to register!\nWrong user id or registration code.')
       }
+    } else {
+      ctx.reply('Failed to register!\nWrong user id or registration code.')
     }
   }
 })
