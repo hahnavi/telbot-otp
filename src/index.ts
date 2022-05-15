@@ -27,7 +27,7 @@ function startApi () {
   })
 }
 
-function startBot () {
+function launchBot () {
   bot.launch()
     .then(() => {
       console.log('Bot is launched')
@@ -36,10 +36,10 @@ function startBot () {
     })
 }
 
-if (process.env.API_ENABLE! === 'true') {
+if (process.env.ENABLE_API === 'true') {
   startApi()
 }
 
-if (process.env.BOT_ENABLE! === 'true') {
-  startBot()
+if (process.env.LAUNCH_BOT === 'true') {
+  launchBot()
 }

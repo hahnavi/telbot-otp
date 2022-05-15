@@ -1,14 +1,17 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
-import userRoutes from './routes/user'
-import otpRoutes from './routes/otp'
+import routes from './routes'
+import auth from './middleware/auth'
 
 const api = express()
 
 api.use(express.json())
 
-api.use('/user', userRoutes)
-api.use('/otp', otpRoutes)
+if (process.env.ENABLE_API_AUTH === 'true') {
+  api.use(auth)
+}
+
+api.use('/', routes)
 
 const swaggerDocument = require('../swagger.json')
 api.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
