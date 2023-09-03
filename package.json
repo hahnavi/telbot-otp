@@ -17,7 +17,7 @@
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "moment": "^2.29.2",
-    "mongoose": "^6.11.3",
+    "mongoose": "^6.12.0",
     "swagger-ui-express": "^4.3.0",
     "telegraf": "^4.6.0"
   },
