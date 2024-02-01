@@ -10,9 +10,9 @@
     }
   },
   "paths": {
-    "/user/register": {
+    "/user/register": @HG4AB",
       "post": {
-        "tags": ["User"],
+        "tags": @HG4AB",
         "summary": "Register a new user",
         "requestBody": {
           "content": {
@@ -22,7 +22,7 @@
                 "properties": {
                   "user_id": {
                     "type": "string",
-                    "example": "myuser123"
+                    "example": @HG4AB
                   }
                 }
               }
@@ -45,7 +45,7 @@
     },
     "/user/status": {
       "post": {
-        "tags": ["User"],
+        "tags": @HG4AB,
         "summary": "Chek user registration status",
         "requestBody": {
           "content": {
@@ -55,7 +55,7 @@
                 "properties": {
                   "user_id": {
                     "type": "string",
-                    "example": "myuser123"
+                    "example": @HG4AB,
                   }
                 }
               }
@@ -94,7 +94,7 @@
                 "properties": {
                   "user_id": {
                     "type": "string",
-                    "example": "myuser123"
+                    "example": @HG4AB,
                   }
                 }
               }
@@ -207,7 +207,7 @@
           },
           "user_id": {
             "type": "string",
-            "example": "myuser123"
+            "example": @HG4AB,
           },
           "reg_code": {
             "type": "string",
